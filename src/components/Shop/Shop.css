@@ -17,6 +17,16 @@
     padding: 20px;
 }
 
+.review-btn {
+    background-color: #FF3030;
+    border: none;
+    width: 100%;
+    color: #FFFFFF;
+    padding: 9px;
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
 
 /* @media screen and (mim-width:576px) {
     .shop-container {

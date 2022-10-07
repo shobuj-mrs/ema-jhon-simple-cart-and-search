@@ -1,5 +1,14 @@
-
-.cart{
+.cart {
     position: sticky;
     top: 100px;
+}
+
+.clear-btn {
+    background-color: #FF3030;
+    border: none;
+    width: 100%;
+    color: #FFFFFF;
+    padding: 9px;
+    border-radius: 10px;
+
 }

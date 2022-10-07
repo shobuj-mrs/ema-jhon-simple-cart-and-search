@@ -1,20 +1,26 @@
 import React from 'react';
-import { useEffect } from 'react';
-import { useState } from 'react';
+import { useLoaderData, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import Cart from '../Cart/Cart';
-import { addToDb, getStoredCart } from '../../utilities/fakedb';
+import { addToDb, deleteShoppingCart, getStoredCart } from '../../utilities/fakedb';
 import Product from '../Product/Product';
 import './Shop.css';
 
 const Shop = () => {
-    const [products, setProducts] = useState([]);
+    const products = useLoaderData();
+    // const [products, setProducts] = useState([]);
     const [cart, setCart] = useState([]);
 
-    useEffect(() => {
-        fetch('products.json')
-            .then(res => res.json())
-            .then(data => setProducts(data));
-    }, []);
+    // useEffect(() => {
+    //     fetch('products.json')
+    //         .then(res => res.json())
+    //         .then(data => setProducts(data));
+    // }, []);
+
+    const clearCart = () => {
+        setCart([]);
+        deleteShoppingCart();
+    }
 
     useEffect(() => {
         const storedCart = getStoredCart();
@@ -61,7 +67,11 @@ const Shop = () => {
                 }
             </div>
             <div className="cart-container">
-                <Cart cart={cart}></Cart>
+                <Cart clearCart={clearCart} cart={cart}>
+                    <Link to="/orders">
+                        <button className='review-btn'>Review Order</button>
+                    </Link>
+                </Cart>
             </div>
         </div>
     );
