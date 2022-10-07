@@ -17,8 +17,30 @@
     padding: 20px;
 }
 
-@media screen and (max-width:1300px) {
+
+/* @media screen and (mim-width:576px) {
+    .shop-container {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+} */
+
+@media screen and (max-width:576px) {
+    .shop-container {
+        display: inline;
+    }
+
+}
+
+@media screen and (max-width:992px) {
     .products-container {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media screen and (max-width:576px) {
+    .products-container {
+        grid-template-columns: repeat(1, 1fr);
     }
 }
