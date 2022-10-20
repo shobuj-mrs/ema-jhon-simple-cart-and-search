@@ -17,6 +17,18 @@
     margin-left: 36px;
 }
 
-.header a:hover{
-    color: red;
+.btn-out {
+    color: #fff;
+    background-color: #1C2B35;
+    border: none;
+    font-size: 17px;
+    margin-left: 10px;
+}
+
+.btn-out:hover {
+    color: rgb(214, 14, 221);
+}
+
+.header a:hover {
+    color: rgb(214, 14, 221);
 }

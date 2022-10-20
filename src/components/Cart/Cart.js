@@ -27,11 +27,7 @@ const Cart = (props) => {
             <h5>Grand Total : ${grandTotal} </h5>
             <br />
             <button onClick={clearCart} className='clear-btn'>Clear Cart</button>
-            {
-                children
-            }
-
-
+            {children}
         </div>
     );
 };
