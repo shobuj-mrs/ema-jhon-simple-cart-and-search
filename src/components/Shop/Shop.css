@@ -27,6 +27,25 @@
     margin-top: 10px;
 }
 
+.pagination {
+    margin-left: 200px;
+    margin-bottom: 50px;
+    margin-top: 20px;
+
+}
+
+.pagination button {
+    margin-right: 15px;
+
+}
+
+.pagination .selected{
+    background-color: green;
+    border: gold;
+    padding: 10px 15px;
+    border-radius: 10px;
+    font-weight: bold;
+}
 
 /* @media screen and (mim-width:576px) {
     .shop-container {
