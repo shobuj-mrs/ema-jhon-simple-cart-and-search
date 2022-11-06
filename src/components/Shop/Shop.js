@@ -15,7 +15,7 @@ const Shop = () => {
     const [size, setSize] = useState(10);
 
     useEffect(() => {
-        const url = `http://localhost:5000/products?page${page}&size${size}`;
+        const url = `http://localhost:5000/products?page=${page}&size=${size}`;
         console.log(page, size);
         fetch(url)
             .then(res => res.json())
@@ -36,15 +36,33 @@ const Shop = () => {
     useEffect(() => {
         const storedCart = getStoredCart();
         const savedCart = [];
-        for (const id in storedCart) {
-            const addedProduct = products.find(product => product._id === id);
-            if (addedProduct) {
-                const quantity = storedCart[id];
-                addedProduct.quantity = quantity;
-                savedCart.push(addedProduct);
-            }
-        }
-        setCart(savedCart);
+
+        const ids = Object.keys(storedCart);
+        console.log(ids);
+
+        fetch('http://localhost:5000/productsByIds', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(ids)
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                console.log('by data', data);
+                for (const id in storedCart) {
+                    const addedProduct = data.find(product => product._id === id);
+                    if (addedProduct) {
+                        const quantity = storedCart[id];
+                        addedProduct.quantity = quantity;
+                        savedCart.push(addedProduct);
+                    }
+                }
+                setCart(savedCart);
+            })
+
+
     }, [products])
 
     const handleAddToCart = (selectedProduct) => {
@@ -95,7 +113,7 @@ const Shop = () => {
                         onClick={() => setPage(number)}
                     >
 
-                        {number}
+                        {number + 1}
                     </button>)
                 }
                 <select onChange={event => setSize(event.target.value)}>
